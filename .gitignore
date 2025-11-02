@@ -82,8 +82,8 @@ storage/registry.json
 storage/cache/
 packages/_runtime/
 
-# 对象存储池（可选：如果不想提交已下载的文件对象）
-# storage/objects/
+# 对象存储池
+storage/objects/
 
 # 日志文件
 *.log
