@@ -1,0 +1,38 @@
+{
+  "name": "simple_app",
+  "version": "1.0.0",
+  "description": "简单的传感器数据显示应用，演示依赖加载和应用运行",
+  "author": "reFun Team",
+
+  "files": {
+    "__init__.py": {
+      "hash": "1e1e00dfdbaf738a820f284878b7484daa0d4998e8a42091aaab150b309723c9",
+      "sources": [
+        "local://packages/simple_app/1.0.0/__init__.py"
+      ]
+    },
+    "app.py": {
+      "hash": "f0a8acde9ad6dbd8b9858e7bff7965abe13e3736593e4cf45b3db8c579dacd44",
+      "sources": [
+        "local://packages/simple_app/1.0.0/app.py"
+      ]
+    },
+    "__main__.py": {
+      "hash": "d51ef191c89a81e5a4ed4730a95f5b5845cc3e5a6185903b432dc6ee2dd6e3e8",
+      "sources": [
+        "local://packages/simple_app/1.0.0/__main__.py"
+      ]
+    }
+  },
+
+  "dependencies": {
+    "sensor_tools": "^1.0.0"
+  },
+
+  "patches": {
+    "global": [],
+    "local": []
+  },
+
+  "entry": "__main__.py"
+}

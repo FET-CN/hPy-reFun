@@ -1,0 +1,20 @@
+{
+  "name": "example_pkg",
+  "version": "1.0.0",
+  "description": "Local package registered from D:\\hPy_reFun\\examples\\_temp_pkg",
+  "files": {
+    "utils.py": {
+      "hash": "b2fc532e5f7c578797c7623cabcc934a0c62baf9f13b6824036f93b60ba78a0a",
+      "sources": [
+        "local://storage\\objects\\b2\\fc532e5f7c578797c7623cabcc934a0c62baf9f13b6824036f93b60ba78a0a"
+      ]
+    },
+    "__init__.py": {
+      "hash": "a09eed3fcfe4eeb9ccd39726902a87b33697e51c9800eeaadecb03df92a0b9c4",
+      "sources": [
+        "local://storage\\objects\\a0\\9eed3fcfe4eeb9ccd39726902a87b33697e51c9800eeaadecb03df92a0b9c4"
+      ]
+    }
+  },
+  "dependencies": {}
+}

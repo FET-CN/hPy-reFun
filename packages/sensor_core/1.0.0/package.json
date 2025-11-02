@@ -1,0 +1,34 @@
+{
+  "name": "sensor_core",
+  "version": "1.0.0",
+  "description": "通用传感器接口库，提供传感器基类和工具函数",
+  "author": "reFun Team",
+
+  "files": {
+    "__init__.py": {
+      "hash": "54ced3ada2322e258f1f06e5b9d2e28d2a6b6e8f014029229bec86ba02b86963",
+      "sources": [
+        "local://packages/sensor_core/1.0.0/__init__.py"
+      ]
+    },
+    "base.py": {
+      "hash": "f60f17696ceb505971485d0e02b013ce428c7d271b7015da9f1d558ec594dde5",
+      "sources": [
+        "local://packages/sensor_core/1.0.0/base.py"
+      ]
+    },
+    "utils.py": {
+      "hash": "8bfe562cc043d84b9ac7e9e08bcf9ea0f092b73f77fee51f5722043485485f24",
+      "sources": [
+        "local://packages/sensor_core/1.0.0/utils.py"
+      ]
+    }
+  },
+
+  "dependencies": {},
+
+  "patches": {
+    "global": [],
+    "local": []
+  }
+}
