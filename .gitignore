@@ -2,11 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
 
-# C 扩展
-*.c
+# C 编译产物（不要忽略 .c 源文件！）
 *.o
+*.a
+*.so
+*.dll
+*.dylib
+*.out
 
 # 发布/打包
 .Python
@@ -64,6 +67,19 @@ venv.bak/
 *.sublime-project
 *.sublime-workspace
 
+# Vibe Coding 工具配置
+.claude/
+.cursor/
+.cursorrules
+.codeium/
+.tabnine/
+.continue/
+.aider*
+aider.conf.yml
+.windsurf/
+.cline/
+.copilot/
+
 # 操作系统文件
 .DS_Store
 .DS_Store?
@@ -76,6 +92,21 @@ desktop.ini
 
 # MicroPython 特定
 *.mpy
+
+# CMake 构建文件
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+cmake_uninstall.cmake
+Makefile
+*.cmake.bak
+
+# Make 构建产物
+*.d
+*.map
+*.elf
+*.bin
+*.hex
 
 # reFun 运行时文件
 storage/registry.json

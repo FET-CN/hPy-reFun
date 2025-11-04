@@ -46,21 +46,22 @@
 - [ ] 准备 ESP32S3 测试设备
 
 ### 1.2 创建 user_c_module 骨架
-- [ ] 创建目录结构
+- [x] 创建目录结构
   ```
-  hPy-reFun/
+  cmodule/
   ├── micropython.mk          # 模块编译配置
   ├── micropython.cmake       # CMake 配置
   ├── modrefun.c              # 模块入口
   ├── refun_version.c/.h      # 版本管理（核心）
   ├── refun_resolver.c/.h     # 依赖解析（核心）
-  └── refun_utils.c/.h        # 工具函数
+  ├── refun_utils.c/.h        # 工具函数
+  └── README.md               # 编译和使用说明
   ```
 
 ### 1.3 模块注册
-- [ ] 实现 `MP_REGISTER_MODULE("refun", ...)`
-- [ ] 创建模块初始化函数
-- [ ] 定义模块全局对象表
+- [x] 实现 `MP_REGISTER_MODULE("refun", ...)`
+- [x] 创建模块初始化函数
+- [x] 定义模块全局对象表
 
 ### 1.4 编译验证
 - [ ] 配置 `USER_C_MODULES` 路径

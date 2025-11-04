@@ -1,6 +1,6 @@
 # reFun API 文档
 
-本文档详细介绍 reFun 包管理器的所有 API。
+本文档详细介绍 reFun (旧版Python实现) 的所有 API。
 
 ## 目录
 
