@@ -49,7 +49,7 @@
 ### 1.2 创建 user_c_module 骨架
 - [x] 创建目录结构
   ```
-  cmodule/
+  hPy-reFun/
   ├── micropython.mk          # 模块编译配置
   ├── micropython.cmake       # CMake 配置
   ├── modrefun.c              # 模块入口
@@ -183,24 +183,24 @@ typedef struct {
 ```
 
 #### 功能实现
-- [ ] `refun.topological_sort(dep_graph)`
+- [x] `refun.topological_sort(dep_graph)`
   - 输入: 依赖图（dict）
   - 输出: 加载顺序列表
   - 使用 Kahn 算法
 
-- [ ] `refun.detect_circular_dep(dep_graph)`
+- [x] `refun.detect_circular_dep(dep_graph)`
   - 输入: 依赖图
   - 输出: 循环路径（如果有）或 None
   - 使用 DFS
 
-- [ ] `refun.match_version(available_versions, constraint)`
+- [x] `refun.match_version(available_versions, constraint)`
   - 输入: 版本列表 + 约束
   - 输出: 匹配的版本（最高版本优先）
 
 #### 优化要点
-- [ ] 使用栈代替递归（节省栈空间）
-- [ ] 邻接表表示图（节省内存）
-- [ ] 结果缓存
+- [x] 使用栈代替递归（节省栈空间）
+- [x] 邻接表表示图（节省内存）
+- [x] 结果缓存
 
 #### Python 接口示例
 ```python
@@ -230,16 +230,16 @@ circular = refun.detect_circular_dep(dep_graph)
 **优先级**: 🔥 中
 
 #### 功能实现
-- [ ] `refun.path_join(*parts)`
+- [x] `refun.path_join(*parts)`
   - 快速路径拼接
   - 处理 `/` 和 `\`
   - 避免 Python 字符串拼接开销
 
-- [ ] `refun.normalize_path(path)`
+- [x] `refun.normalize_path(path)`
   - 规范化路径
   - 处理 `..` 和 `.`
 
-- [ ] `refun.hash_string(data)`
+- [x] `refun.hash_string(data)`
   - 包装 `uhashlib.sha256()`
   - 返回十六进制字符串
   - 方便调用
@@ -258,46 +258,6 @@ normalized = refun.normalize_path("/a/b/../c/./d")
 ---
 
 ### 2.4 复用 MicroPython 已有功能
-
-#### Hash 计算 - 使用 uhashlib
-```python
-# lib/refun/hasher.py 无需修改太多
-import uhashlib
-
-def compute_hash(file_path):
-    h = uhashlib.sha256()
-    with open(file_path, 'rb') as f:
-        while True:
-            data = f.read(4096)
-            if not data:
-                break
-            h.update(data)
-    return h.hexdigest()
-```
-
-#### JSON 解析 - 使用 ujson
-```python
-# lib/refun/registry.py
-import ujson
-
-def load_registry():
-    with open('registry.json', 'r') as f:
-        return ujson.load(f)
-
-def save_registry(data):
-    with open('registry.json', 'w') as f:
-        ujson.dump(data, f)
-```
-
-#### 文件操作 - 使用 os
-```python
-# lib/refun/fetcher.py
-import os
-
-def makedirs(path):
-    # MicroPython os.makedirs 已经很快
-    os.makedirs(path, exist_ok=True)
-```
 
 **里程碑**: 核心 C 模块实现完成，其他功能复用 MicroPython
 

@@ -24,6 +24,11 @@ SRC_USERMOD += $(REFUN_MOD_DIR)/src/modrefun.c
 SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_version.c
 SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_resolver.c
 SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_utils.c
+SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_registry.c
+SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_fetcher.c
+SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_patcher.c
+SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_loader.c
+SRC_USERMOD += $(REFUN_MOD_DIR)/src/refun_manager.c
 
 # 添加包含目录（src/ 用于头文件）
 CFLAGS_USERMOD += -I$(REFUN_MOD_DIR)/src

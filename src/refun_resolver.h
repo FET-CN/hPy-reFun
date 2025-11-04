@@ -44,4 +44,21 @@ extern const mp_obj_fun_builtin_fixed_t refun_topological_sort_obj;
 extern const mp_obj_fun_builtin_fixed_t refun_detect_circular_dep_obj;
 extern const mp_obj_fun_builtin_fixed_t refun_match_version_obj;
 
+// ============================================================================
+// DependencyResolver 类（阶段3新增）
+// ============================================================================
+
+// DependencyResolver 对象结构
+typedef struct {
+    mp_obj_base_t base;
+    mp_obj_t registry;       // Registry 对象引用
+    mp_obj_t resolved_cache; // dict: 已解析缓存
+} refun_resolver_obj_t;
+
+// 类型声明
+extern const mp_obj_type_t refun_resolver_type;
+
+// DependencyResolver API 函数
+mp_obj_t refun_resolver_make_new(const mp_obj_type_t *type, size_t n_args, size_t n_kw, const mp_obj_t *args);
+
 #endif // REFUN_RESOLVER_H

@@ -239,3 +239,84 @@ mp_obj_t refun_match_version(mp_obj_t available_versions, mp_obj_t constraint) {
     return best ? MP_OBJ_FROM_PTR(best) : mp_const_none;
 }
 static MP_DEFINE_CONST_FUN_OBJ_2(refun_match_version_obj, refun_match_version);
+
+//=============================================================================
+// DependencyResolver 类（阶段3新增）
+//=============================================================================
+
+// ============================================================================
+// DependencyResolver 构造函数
+// ============================================================================
+
+static mp_obj_t refun_resolver_make_new(const mp_obj_type_t *type, size_t n_args, size_t n_kw, const mp_obj_t *args) {
+    mp_arg_check_num(n_args, n_kw, 1, 1, false);
+
+    // 创建 DependencyResolver 对象
+    refun_resolver_obj_t *self = mp_obj_malloc(refun_resolver_obj_t, type);
+
+    // 保存 registry 引用
+    self->registry = args[0];
+
+    // 初始化缓存
+    self->resolved_cache = mp_obj_new_dict(0);
+
+    return MP_OBJ_FROM_PTR(self);
+}
+
+// ============================================================================
+// DependencyResolver.resolve(pkg_name, version_constraint=None)
+// ============================================================================
+
+static mp_obj_t refun_resolver_resolve(size_t n_args, const mp_obj_t *args) {
+    refun_resolver_obj_t *self = MP_OBJ_TO_PTR(args[0]);
+    mp_obj_t pkg_name = args[1];
+    mp_obj_t constraint = (n_args > 2) ? args[2] : mp_const_none;
+
+    // 创建缓存键
+    mp_obj_t cache_key_tuple[2] = {pkg_name, constraint};
+    mp_obj_t cache_key = mp_obj_new_tuple(2, cache_key_tuple);
+
+    // 检查缓存
+    mp_obj_t cached = mp_obj_dict_get(self->resolved_cache, cache_key);
+    if (cached != MP_OBJ_NULL) {
+        return cached;
+    }
+
+    // 获取可用版本
+    mp_obj_t list_versions_method = mp_load_attr(self->registry, MP_QSTR_list_versions);
+    mp_obj_t versions = mp_call_function_1(list_versions_method, pkg_name);
+
+    // TODO: 完整的依赖解析实现
+    // 当前简化实现：只返回依赖图和加载顺序
+
+    mp_obj_t result = mp_obj_new_dict(0);
+    mp_obj_dict_store(result, MP_OBJ_NEW_QSTR(MP_QSTR_dependencies), mp_obj_new_dict(0));
+    mp_obj_dict_store(result, MP_OBJ_NEW_QSTR(MP_QSTR_load_order), mp_obj_new_list(0, NULL));
+
+    // 缓存结果
+    mp_obj_dict_store(self->resolved_cache, cache_key, result);
+
+    return result;
+}
+static MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(refun_resolver_resolve_obj, 2, 3, refun_resolver_resolve);
+
+// ============================================================================
+// DependencyResolver 类型的本地字典（方法表）
+// ============================================================================
+
+static const mp_rom_map_elem_t refun_resolver_locals_dict_table[] = {
+    { MP_ROM_QSTR(MP_QSTR_resolve), MP_ROM_PTR(&refun_resolver_resolve_obj) },
+};
+static MP_DEFINE_CONST_DICT(refun_resolver_locals_dict, refun_resolver_locals_dict_table);
+
+// ============================================================================
+// DependencyResolver 类型定义
+// ============================================================================
+
+MP_DEFINE_CONST_OBJ_TYPE(
+    refun_resolver_type,
+    MP_QSTR_DependencyResolver,
+    MP_TYPE_FLAG_NONE,
+    make_new, refun_resolver_make_new,
+    locals_dict, &refun_resolver_locals_dict
+);

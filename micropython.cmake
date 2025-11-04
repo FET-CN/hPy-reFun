@@ -27,6 +27,11 @@ target_sources(usermod_refun INTERFACE
     ${REFUN_MOD_DIR}/src/refun_version.c
     ${REFUN_MOD_DIR}/src/refun_resolver.c
     ${REFUN_MOD_DIR}/src/refun_utils.c
+    ${REFUN_MOD_DIR}/src/refun_registry.c
+    ${REFUN_MOD_DIR}/src/refun_fetcher.c
+    ${REFUN_MOD_DIR}/src/refun_patcher.c
+    ${REFUN_MOD_DIR}/src/refun_loader.c
+    ${REFUN_MOD_DIR}/src/refun_manager.c
 )
 
 # 添加包含目录（src/ 用于头文件）
