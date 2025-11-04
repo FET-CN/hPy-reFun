@@ -48,7 +48,7 @@
 ### 1.2 创建 user_c_module 骨架
 - [ ] 创建目录结构
   ```
-  micropython/usermods/refun/
+  hPy-reFun/
   ├── micropython.mk          # 模块编译配置
   ├── micropython.cmake       # CMake 配置
   ├── modrefun.c              # 模块入口
